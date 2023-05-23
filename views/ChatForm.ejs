@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <link rel="shortcut icon" href="/image" type="image/x-icon">
+      <%- include('partials/_bootstrap.ejs') %>
+      <title>Nouveau Post</title>
+  </head>
+  <body>
+    <%- include('partials/_nav.ejs') %> <!--Importer Nav-->
+    <div class="container mt-5">
+      <h1>New Post</h1>
+      <form method="post" action="/submit-chat" > 
+          <div class="mb-3">
+            <label class="form-label">expediteur</label>
+            <input type="text" class="form-control" name="expediteur" >
+          </div>
+          <div class="mb-3">
+            <label class="form-label">destinataire</label>
+            <input type="text" class="form-control" name="destinataire">
+          </div>
+          <div class="form-group mb-3">
+            <label>message</label>
+            <textarea class="form-control" name="message" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Envoyer</button>
+
+        </form>
+    </div>
+  </body>
+</html>

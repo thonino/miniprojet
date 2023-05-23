@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <link rel="shortcut icon" href="/image" type="image/x-icon">
+      <%- include('partials/_bootstrap.ejs') %>
+      <title>Signup</title>
+  </head>
+  <body>
+    <%- include('partials/_nav.ejs') %> <!--Importer Nav-->
+    <div class="container mt-5">
+      <h1 class="text-info">Inscription</h1>
+      <form method="post" action="/api/signup", > 
+          <div class="mb-3">
+            <label class="form-label">pseudo</label>
+            <input type="text" class="form-control" name="pseudo" >
+          </div>
+          <div class="mb-3">
+            <label class="form-label">email</label>
+            <input type="text" class="form-control" name="email">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">password</label>
+            <input type="text" class="form-control" name="password">
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-bold">statut</label>
+            <select class="form-select"  name="statu">
+                <option selected>Statut du compte</option>
+                <option value="visible">visible</option>
+                <option value="invisible">privé</option>
+            </select>
+          </div>
+          <input type="hidden" name="role" value="user">
+          <button type="submit" class="btn btn-primary">Inscription</button>
+        </form>
+    </div>
+  </body>
+</html>

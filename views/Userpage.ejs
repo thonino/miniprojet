@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <link rel="shortcut icon" href="/image" type="image/x-icon">
+      <%- include('partials/_bootstrap.ejs') %>
+      <title>User</title>
+  </head>
+  <body>
+    <%- include('partials/_nav.ejs') %> <!--Importer Nav-->
+    <div class="container mt-5 ext-center d-flex flex-column align-items-center justify-content-center">
+      <h1 class="mb-2 text-info">Votre compte</h1>
+      <h3 class=" texte-success">liste de vos messages</h3>
+      <a class="btn btn-success" href="/new/message">Nouveau Message</a>
+      
+    </div>
+    <div class="container mt-5">
+      
+      <h1 class="mb-2 text-info">Messages envoyés</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">déstinataire</th>
+              <th scope="col">Message</th>
+              <th scope="col">Modifier message</th>
+              <th scope="col">Supprimer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% data.forEach((chat)=>{%>
+            <tr>
+              <td><%= chat.destinataire %></td>
+              <td><%= chat.message %></td>
+              <td><a href="/chat/<%= chat.id %>" class="btn btn-warning mb-2">Modifier</a></td>
+              <td>
+                <form method="post" action="/delete/<%= chat.id%>?_method=DELETE">
+                  <input type="hidden" name="_method" value="DELETE">
+                    <input type="submit" class="btn btn-danger mt-2" name="delete" value="supprimer">
+                </form>
+            </td>
+            </tr>
+            <% })%>
+          </tbody>
+        </table>
+    </div>
+    <div class="container mt-5">
+      <h1 class="mb-2 text-info">Messages reçus</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">expéditeur</th>
+              <th scope="col">Message</th>
+              <th scope="col">Supprimer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% data.forEach((chat)=>{%>
+            <tr>
+              <td><%= chat.expediteur %></td>
+              <td><%= chat.message %></td>
+              <td>
+                <form method="post" action="/delete/<%= chat.id%>?_method=DELETE">
+                  <input type="hidden" name="_method" value="DELETE">
+                    <input type="submit" class="btn btn-danger mt-2" name="delete" value="supprimer">
+                </form>
+            </td>
+            </tr>
+            <% })%>
+          </tbody>
+        </table>
+        
+    </div>
+    
+  </body>
+</html>
