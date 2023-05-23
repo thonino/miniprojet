@@ -45,6 +45,9 @@ app.use(methodOverride('_method'));
 const bcrypt = require('bcrypt');
 
 
+
+
+
 // -------------- User ----------------
 app.get('/new/user', function(req, res){
   res.render('SignupForm',);});
